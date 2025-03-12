@@ -1,18 +1,36 @@
 @use '../../../../public/sass/abstract/variables' as *;
 
 nav {
+  .icon-bar {
+    display: none;
+    margin: 15px auto;
+    font-size: 2rem;
+    cursor: pointer;
+    i {
+      transition: 0.2s;
+      color: $grey;
+      &:hover {
+        color: $main-color;
+      }
+    }
+  }
   ul {
     display: flex;
     align-items: center;
     justify-content: end;
     margin: 25px 35px;
+    transition: all 0.2s ease-in-out;
+    transform: translateY(-10px);
     a {
       margin-right: 55px;
       display: inline-block;
       font-weight: 400;
       font-size: 20px;
       cursor: pointer;
-      transition: .3s;
+      transition: .2s;
+      i {
+        display: none;
+      }
     }
     .lang {
       color: #333;
@@ -32,7 +50,7 @@ nav {
     }
     .register {
       border: 1px solid #E0E0E9;
-      box-shadow: 0px 10px 30px 0px rgba(68, 97, 242, 0.0509803922);
+      box-shadow: 0px 10px 30px 0px rgba(68, 97, 242, 0.05);
       color: $main-color;
       padding: 3px 24px;
       border-radius: 10px;
@@ -42,22 +60,90 @@ nav {
       }
     }
   }
+  ul.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 1200px) {
   ul {
     margin: 25px 15px !important;
-    li {
+    a {
       margin-right: 35px !important;
     }
   }
 }
 
 @media (max-width: 992px) {
+  .icon-bar {
+    display: block !important;
+  }
   ul {
-    margin: 25px 05px !important;
+    z-index: 9999999;
+    padding: 0;
+    width: 14rem;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.2s ease-in-out;
     li {
-      margin-right: 25px !important;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      &:not(:last-child){
+        border-bottom: 1px solid #eee !important;
+      }
+      a {
+        font-size: 19px;
+        display: block;
+        font-weight: 400 !important;
+        border-radius: 0 !important;
+        border: 0px !important;
+        margin: 0px !important;
+        width: 100%;
+        padding: 10px !important;
+        color: $main-color !important;
+        transition: .2s;
+        &:hover {
+          background-color: $main-color;
+          color: #fff !important;
+          padding-left: 17px !important;
+          i {
+            color: #fff !important;
+          }
+        }
+        i {
+          margin-right: 10px;
+          color: $second-color;
+          display: inline-block !important;
+        }
+      }
     }
+  }
+
+  ul.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .icon-bar {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+  }
+  ul {
+    margin: 45px 15px !important;
   }
 }
