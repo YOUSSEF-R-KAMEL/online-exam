@@ -1,0 +1,17 @@
+@use '../../../../public/sass/abstract/variables' as *;
+button {
+  margin-top: 40px;
+  border: none;
+  width: 100%;
+  height: 56px;
+  gap: 8px;
+  border-radius: 20px;
+  padding: 8px;
+  color: #fff !important;
+  box-shadow: 0px 18px 30px 0px #2F1C1C1A;
+  background: $main-color;
+  transition: .2s;
+  &:hover {
+  background: $second-color;
+  }
+}

@@ -1,0 +1,17 @@
+<section class="w-50 m-auto ">
+  <div class="container">
+    <h2 class="title">Sign up</h2>
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+      <app-input type="text" formControlName="firstName" placeholder="First Name"></app-input>
+      <app-input type="text" formControlName="lastName" placeholder="Last Name"></app-input>
+      <app-input type="email" formControlName="email" placeholder="Enter Email"></app-input>
+      <app-input type="password" formControlName="password" placeholder="Password"></app-input>
+      <app-input type="password" formControlName="confirmPassword" placeholder="Confirm Password"></app-input>
+      <p>
+        Already have an account?
+        <a routerLink="/auth/signin" class="forget-link d-block">Login ?</a>
+      </p>
+      <app-submit text="Create Account"></app-submit>
+    </form>
+  </div>
+</section>

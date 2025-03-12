@@ -1,0 +1,33 @@
+@use '../../../../public/sass/abstract/variables' as *;
+
+.input-container {
+  position: relative;
+  margin-bottom: 31px;
+  input {
+    width: 100%;
+    border: 1.5px solid #E0E0E9;
+    background: #f9f9f9;
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0px 10px 20px 0px #4461F20D;
+    transition: .2s;
+    &::placeholder {
+      font-weight: 500;
+      font-size: 13.88px;
+      line-height: 23.79px;
+      letter-spacing: 0.15px;
+      color: #A1A4A9;
+    }
+    &:focus {
+      border: 1.5px solid $main-color;
+    }
+  }
+  img {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    width: 25px;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+}

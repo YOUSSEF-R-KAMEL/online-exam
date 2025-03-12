@@ -1,0 +1,17 @@
+<div class="input-container text-center">
+  <input
+    [type]="isPasswordVisible ? 'text' : type"
+    [value]="value"
+    (input)="handleInput($event)"
+    (blur)="onTouched()"
+    [placeholder]="placeholder"
+  />
+
+  @if (type === 'password') {
+    <img
+    [src]="isPasswordVisible ? 'images/auth/eye-slash-icon.svg' : 'images/auth/eye-icon.svg'"
+    alt="Toggle Password"
+    (click)="togglePassword()"
+    />
+  }
+</div>

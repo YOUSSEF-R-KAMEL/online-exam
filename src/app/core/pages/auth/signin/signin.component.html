@@ -1,0 +1,11 @@
+<section class="w-50 mx-auto">
+  <div class="container">
+    <h2 class="title">Sign in</h2>
+  <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
+    <app-input type="email" formControlName="email" placeholder="Enter Email"></app-input>
+    <app-input type="password" formControlName="password" placeholder="Password"></app-input>
+    <a routerLink="/auth/forget-password" class="forget-link d-block">Recover Password?</a>
+    <app-submit text="Sign in"></app-submit>
+  </form>
+  </div>
+</section>
