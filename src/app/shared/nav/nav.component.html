@@ -3,17 +3,21 @@
     <div class="icon-bar text-end" (click)="toggleMenu()">
       <i class="fa-solid fa-bars"></i>
     </div>
-    <ul [class.show]="isMenuOpen">
+    <ul class="menu" [class.show]="isMenuOpen">
       <li>
-        <a class="lang" routerLink="/auth/signin" routerLinkActive="router-link-active"><i class="fa-solid fa-language"></i> English <i class="fa-solid fa-caret-down"></i></a>
+        <div class="dropdown">
+          <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            English
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item">Ar</a></li>
+          </ul>
+        </div>
+      <li>
+        <a class="signin" routerLink="/auth/signin">Sign in</a>
       </li>
       <li>
-
-        <a class="signin" routerLink="/auth/signin"> <i class="fa-solid fa-user"></i> Sign in</a>
-      </li>
-      <li>
-
-        <a class="register" routerLink="/auth/signup"><i class="fa-solid fa-user-plus"></i>Register</a>
+        <a class="register" routerLink="/auth/signup">Register</a>
       </li>
     </ul>
   </div>

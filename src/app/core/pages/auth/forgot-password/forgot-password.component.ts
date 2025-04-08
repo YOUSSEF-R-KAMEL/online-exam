@@ -5,10 +5,11 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { AuthApiService } from 'auth-api';
 import { IResponse } from '../../../../../../projects/auth-api/src/lib/models/IResponse';
 import { IUser } from '../../../../../../projects/auth-api/src/lib/models/IUser';
+import { ErrorComponent } from "../../../../shared/error/error.component";
 
 @Component({
   selector: 'app-forgot-password',
-  imports: [InputComponent, SubmitComponent, ReactiveFormsModule],
+  imports: [InputComponent, SubmitComponent, ReactiveFormsModule, ErrorComponent],
   templateUrl: './forgot-password.component.html',
   styleUrl: './forgot-password.component.scss'
 })

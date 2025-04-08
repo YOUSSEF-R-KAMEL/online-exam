@@ -3,8 +3,10 @@
     <h2 class="title">Sign in</h2>
   <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
     <app-input type="email" formControlName="email" placeholder="Enter Email"></app-input>
+    <app-error [control]="signinForm.get('email')" type='email'></app-error>
     <app-input type="password" formControlName="password" placeholder="Password"></app-input>
-    <a routerLink="/auth/forget-password" class="forget-link d-block">Recover Password?</a>
+    <app-error [control]="signinForm.get('password')" type='password'></app-error>
+    <a routerLink="/auth/forget-password" class="forget-link d-block mt-3">Recover Password?</a>
     <app-submit text="Sign in"></app-submit>
   </form>
   </div>

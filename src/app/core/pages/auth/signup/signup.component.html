@@ -2,17 +2,22 @@
   <div class="container">
     <h2 class="title">Sign up</h2>
     <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-      <app-input type="text" formControlName="username" placeholder="User Name"></app-input>
       <app-input type="text" formControlName="firstName" placeholder="First Name"></app-input>
+      <app-error [control]="signupForm.get('firstName')" type='firstName'></app-error>
       <app-input type="text" formControlName="lastName" placeholder="Last Name"></app-input>
+      <app-error [control]="signupForm.get('lastName')" type='lastName'></app-error>
       <app-input type="text" formControlName="phone" placeholder="Phone"></app-input>
+      <app-error [control]="signupForm.get('phone')" type='phone'></app-error>
       <app-input type="email" formControlName="email" placeholder="Email"></app-input>
+      <app-error [control]="signupForm.get('email')" type='email'></app-error>
       <app-input type="password" formControlName="password" placeholder="Password"></app-input>
+      <app-error [control]="signupForm.get('password')" type='password'></app-error>
       <app-input type="password" formControlName="rePassword" placeholder="Confirm Password"></app-input>
-      <p>
-        Already have an account?
-        <a routerLink="/auth/signin" class="forget-link d-block">Login ?</a>
-      </p>
+      <app-error [control]="signupForm" type='rePassword'></app-error>
+      <div class="d-flex justify-content-center align-items-center mt-3">
+        Already have an account? &nbsp;
+        <a routerLink="/auth/signin" class="forget-link"> Login</a>
+      </div>
       <app-submit text="Create Account"></app-submit>
     </form>
   </div>

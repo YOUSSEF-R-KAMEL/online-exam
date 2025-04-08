@@ -14,7 +14,8 @@ export class AuthApiAdaptorService implements Adaptor {
   signinAndSignupAdaptor(data:IResponse<IUser>): IResponseSignin<IUser> {
     return {
       user: data.user,
-      message: data.message
+      message: data.message,
+      token: data.token
     }
   }
   ForgotPasswordAdaptor(data:IResponse<IUser>){

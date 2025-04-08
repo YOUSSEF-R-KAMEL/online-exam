@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { InputComponent } from "../../../../shared/input/input.component";
 import { SubmitComponent } from "../../../../shared/submit/submit.component";
-import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ErrorComponent } from '../../../../shared/error/error.component';
 
 @Component({
   selector: 'app-set-password',
-  imports: [InputComponent, SubmitComponent, ReactiveFormsModule],
+  imports: [InputComponent, SubmitComponent, ReactiveFormsModule, ErrorComponent],
   templateUrl: './set-password.component.html',
   styleUrl: './set-password.component.scss'
 })
@@ -13,9 +14,9 @@ export class SetPasswordComponent {
   setPasswordForm!: FormGroup;
   constructor(private fb: FormBuilder) {
     this.setPasswordForm = this.fb.group({
-      password: ['', [Validators.required]],
-      newPassword: ['', [Validators.required]],
-    }, { validator: this.checkPasswords });
+      email: ['', [Validators.required]],
+      newPassword: ['', [Validators.required, Validators.pattern('/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/')]],
+    });
   }
 
   onSubmit() {
@@ -25,11 +26,5 @@ export class SetPasswordComponent {
     } else {
       console.log('Invalid Form');
     }
-  }
-
-  checkPasswords(g:AbstractControl){
-    const password = g.get('password')?.value;
-    const newPassword = g.get('newPassword')?.value;
-    return password === newPassword ? null : { mismatch: true }
   }
 }

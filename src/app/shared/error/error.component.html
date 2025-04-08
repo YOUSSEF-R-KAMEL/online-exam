@@ -1,0 +1,69 @@
+@if (control?.errors && (control?.touched || control?.dirty)) {
+  <p class="auth-error text-danger ps-2 m-0 mt-2">
+    <!-- Required Errors -->
+    @if (control?.getError('required')) {
+      @if (type === 'firstName') {
+        First Name is required
+      }
+      @if (type === 'lastName') {
+        Last Name is required
+      }
+      @if (type === 'email') {
+        email is required
+      }
+      @if (type === 'phone') {
+        phone is required
+      }
+      @if (type === 'password') {
+        password is required
+      }
+      @if (type === 'rePassword') {
+        new Password is required
+      }
+      @if (type === 'newPassword') {
+        new Password is required
+      }
+      @if (type === 'code') {
+        resetCode is required
+      }
+    }
+
+    <!-- firstName Validation -->
+    @if (type === 'firstName' && control?.getError('minlength')) {
+      length must be at least 3 characters long
+    }
+
+    <!-- lastName Validation -->
+    @if (type === 'lastName' && control?.getError('minlength')) {
+      length must be at least 3 characters long
+    }
+
+    <!-- Email Validation -->
+    @if (type === 'email' && control?.getError('email')) {
+      email is not valid
+    }
+
+    <!-- Phone Validation -->
+    @if (type === 'phone' && control?.getError('pattern')) {
+      cept only Egypt phone numbers like (01210203040)
+    }
+
+    <!-- Password Validation -->
+    @if (type === 'password' && control?.getError('pattern')) {
+      hi
+      At least one lowercase letter <br> At least one uppercase letter <br> At least one number <br> At least one special character <br> Minimum 6 characters of the allowed
+    }
+
+    <!-- rePassword Validation -->
+    @if (type === 'rePassword' && control?.getError('mismatch')) {
+      confirm password not allowed with password
+    }
+
+    <!-- newPassword Validation -->
+    @if (type === 'newPassword' && control?.getError('pattern')) {
+      At least one lowercase letter <br> At least one uppercase letter <br> At least one number <br> At least one special character <br> Minimum 6 characters of the allowed
+    }
+
+
+  </p>
+}

@@ -11,6 +11,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular/animations": "^19.2.5",
     "@angular/common": "^19.2.0",
     "@angular/compiler": "^19.2.0",
     "@angular/core": "^19.2.0",
@@ -24,6 +25,8 @@
     "bootstrap": "^5.3.3",
     "express": "^4.21.2",
     "latest": "^0.2.0",
+    "ngx-spinner": "^19.0.0",
+    "ngx-toastr": "^19.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "vite": "^6.2.1",
