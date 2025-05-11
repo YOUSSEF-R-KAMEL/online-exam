@@ -1,0 +1,13 @@
+@if (questionsList.length > 0) {
+  <h2 mat-dialog-title>Install Angular</h2>
+    <mat-dialog-content class="mat-typography">
+      @for (question of questionsList; track $index) {
+        <p>{{question.question}}</p>
+      }
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>Cancel</button>
+      <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>
+    </mat-dialog-actions>
+
+}

@@ -1,0 +1,33 @@
+@use '../../../../public/sass/abstract/variables' as *;
+
+aside {
+  height: 100vh;
+  width: 100%;
+  border-radius: 0 10px 10px 0;
+  transition: all 0.3s ease;
+
+  .sidebar-menu a {
+    background-color: $second-color;
+    display: inline-block;
+    color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    transition: all 0.3s ease;
+    &:hover {
+      background-color: $main-color;
+    }
+  }
+}
+
+.router-link-active {
+  background-color: $main-color;
+  color: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  transition: all 0.3s ease;
+  &:hover {
+    background-color: $second-color;
+  }
+}

@@ -37,23 +37,33 @@ export class SignupComponent {
     this.signupForm.get('username')!.setValue(`${firstName} ${lastName}`, { emitEvent: false });
   }
 
+  sanitizeInput(value: string): string {
+    return value.replace(/[\u200E\u200F\u202A-\u202E]/g, '');
+  }
+
   onSubmit() {
     if (this.signupForm.valid) {
-      this._authApiService.signup(this.signupForm.value).subscribe({
+      const sanitizedForm = {
+        ...this.signupForm.value,
+        firstName: this.sanitizeInput(this.signupForm.value.firstName),
+        lastName: this.sanitizeInput(this.signupForm.value.lastName),
+      };
+
+      this._authApiService.signup(sanitizedForm).subscribe({
         next: (res: IResponseSignin<IUser>) => {
-          // console.log(res);
-          this._toastr.success(res.message  , "Success");
+          console.log(res);
+          // this._toastr.success(res.message  , "Success");
         },
-        error: (err) => {
-          console.error(err);
-          const errorMessage = err?.error?.message || "An error occurred. Please try again.";
-          this._toastr.error(errorMessage, "Error");
-        }
+        // error: (err) => {
+        //   const errorMessage = err?.error?.message || "An error occurred. Please try again.";
+        //   this._toastr.error(errorMessage, "Error");
+        // }
       });
     } else {
       this.signupForm.markAllAsTouched();
     }
   }
+
 
 
   checkPasswords(g:AbstractControl){

@@ -1,0 +1,43 @@
+@use '../../../../../../public/sass/abstract/variables' as *;
+
+.subjects {
+  padding: 20px;
+
+  .subjects-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    h3 {
+      margin: 0;
+      color: #2c3e50;
+      font-weight: 600;
+    }
+
+    .view-all {
+      color: $main-color;
+      text-decoration: none;
+      font-weight: 500;
+      cursor: pointer;
+      transition: color 0.3s ease;
+      font-size: 1.2rem;
+      font-weight: bold;
+
+      &:hover {
+        color: $main-color;
+      }
+
+      &.active {
+        color: $main-color;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .subjects-grid {
+    .row {
+      margin: 0 -10px;
+    }
+  }
+}

@@ -1,0 +1,23 @@
+@if (examsList.length > 0) {
+  <div class="quiz-card">
+    @for (exam of examsList; track $index) {
+      <div class="quiz-info">
+        <div class="quiz-text">
+          <h4>{{exam.title}}</h4>
+          <p>{{exam.numberOfQuestions}} Questions</p>
+        </div>
+      </div>
+      <div class="quiz-action d-flex flex-column">
+        <span>{{exam.duration}} Minutes</span>
+        <button (click)="openDialog(exam._id)">Start</button>
+
+      </div>
+    }
+  </div>
+} @else {
+  <div class="text-center">
+    <h4 class="text-danger">No exams found</h4>
+    <img src="images/not-exam.png" alt="empty">
+  </div>
+}
+

@@ -1,0 +1,17 @@
+<section class="subjects">
+  <div class="subjects-header">
+    <h3>Subjects</h3>
+    <a (click)="toggleViewAll()" class="view-all" [class.active]="showAll">
+      {{ showAll ? 'Show Less' : 'View All' }}
+    </a>
+  </div>
+  <div class="subjects-grid">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      @for (subject of displayedSubjects; track subject._id) {
+        <div class="col-12 col-md-6 col-lg-4">
+          <app-subject-card [subject]="subject"></app-subject-card>
+        </div>
+      }
+    </div>
+  </div>
+</section>

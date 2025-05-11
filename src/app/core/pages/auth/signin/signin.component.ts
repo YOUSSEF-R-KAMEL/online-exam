@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { InputComponent } from "../../../../shared/input/input.component";
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { SubmitComponent } from "../../../../shared/submit/submit.component";
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthApiService } from 'auth-api';
@@ -16,7 +16,11 @@ import { IResponse } from '../../../../../../dist/auth-api/lib/models/IResponse'
 })
 export class SigninComponent {
   signinForm!: FormGroup;
-  constructor(private fb: FormBuilder, private _authApiService:AuthApiService) {
+  constructor(
+    private fb: FormBuilder,
+    private _authApiService: AuthApiService,
+    private _router: Router
+  ) {
     this.signinForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.pattern(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/)]],
@@ -29,7 +33,10 @@ export class SigninComponent {
       this._authApiService.signin(this.signinForm.value).subscribe({
         next: (res:IResponse<IUser>) => {
           console.log(res)
-          // localStorage.setItem('token', res.token!)
+          localStorage.setItem('token', res.token!)
+          if(localStorage.getItem('token') !== 'undefined'){
+            this._router.navigateByUrl('/home')
+          }
         },
         error: (err) => {
           console.log(err)

@@ -8,20 +8,26 @@ import { SignupComponent } from './core/pages/auth/signup/signup.component';
 import { loggedGuard } from './core/guards/logged.guard';
 import { authGuard } from './core/guards/auth.guard';
 import { HomeComponent } from './feature/home/home.component';
+import { ForgetComponent } from './core/pages/auth/forget/forget.component';
+import { DashboardComponent } from './feature/dashboard/dashboard.component';
+import { ExamsComponent } from './feature/dashboard/components/exams/exams.component';
 
 export const routes: Routes = [
-  {path: '', redirectTo: 'auth/signin', pathMatch: 'full'},
-  {path: "auth", component: AuthLayoutComponent,
-    canActivate: [loggedGuard],
+  { path: '', component: AuthLayoutComponent, canActivate: [loggedGuard],
     children: [
-      {path: 'signin', component: SigninComponent},
+      {path: '', component: SigninComponent},
       {path: 'signup', component: SignupComponent},
-      {path: 'forget-password', component: ForgotPasswordComponent},
-      {path: 'verify-code', component: VerifyCodeComponent},
-      {path: 'set-password', component: SetPasswordComponent},
+      {path: 'forget', component: ForgetComponent},
     ]
   },
-  {path: '', canActivate: [authGuard], children: [
-  {path: "home", component: HomeComponent}
-  ]}
+  {path: '', canActivate: [authGuard], children:
+    [
+      {path: "home", component: HomeComponent, children:
+        [
+          {path: "", component: DashboardComponent},
+          {path: "exams/:id", component: ExamsComponent},
+        ]
+      }
+    ]
+  }
 ];
