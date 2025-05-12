@@ -4,6 +4,7 @@ import { SubjectsComponent } from "./components/subjects/subjects.component";
 
 @Component({
   selector: 'app-dashboard',
+  standalone: true,
   imports: [CommonModule, SubjectsComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'

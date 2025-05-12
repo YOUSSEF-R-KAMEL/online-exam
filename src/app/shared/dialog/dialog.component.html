@@ -1,4 +1,4 @@
-@if (questionsList.length > 0) {
+<!-- @if (questionsList.length > 0) {
   <h2 mat-dialog-title>Install Angular</h2>
     <mat-dialog-content class="mat-typography">
       @for (question of questionsList; track $index) {
@@ -10,4 +10,31 @@
       <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>
     </mat-dialog-actions>
 
-}
+} -->
+
+<h2 mat-dialog-title>Questions</h2>
+
+<mat-dialog-content *ngIf="questionsList.length > 0">
+  <mat-horizontal-stepper #stepper>
+    <mat-step *ngFor="let question of questionsList; let i = index" >
+
+      <p>{{ question.question }}</p>
+
+      <mat-radio-group [(ngModel)]="selectedAnswers[i]">
+        <mat-radio-button *ngFor="let choice of question.answers" [value]="choice">
+          {{ choice.answer }}
+        </mat-radio-button>
+      </mat-radio-group>
+
+      <div class="buttons">
+        <button mat-button matStepperPrevious *ngIf="i !== 0">Back</button>
+        <button mat-button matStepperNext *ngIf="i !== questionsList.length - 1">Next</button>
+        <button mat-button color="primary" (click)="submit()" *ngIf="i === questionsList.length - 1">Submit</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</mat-dialog-content>
+
+<mat-dialog-content *ngIf="questionsList.length === 0">
+  <p>Loading questions...</p>
+</mat-dialog-content>

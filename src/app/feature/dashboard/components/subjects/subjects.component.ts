@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { SubjectCardComponent } from '../subject-card/subject-card.component';
 import { QuizzesService } from '../../services/quizzes/quizzes.service';
+import { SearchService } from '../../../../shared/services/search.service';
 
 @Component({
   selector: 'app-subjects',
@@ -14,22 +15,40 @@ import { QuizzesService } from '../../services/quizzes/quizzes.service';
 })
 export class SubjectsComponent implements OnInit, OnDestroy {
   quizzesService = inject(QuizzesService);
+  searchService = inject(SearchService);
   subjectsList: ISubject[] = [];
   displayedSubjects: ISubject[] = [];
   private subscription: Subscription = new Subscription();
   showAll: boolean = false;
 
   ngOnInit(): void {
-    this.getSubjects()
+    this.getSubjects();
+    this.subscription.add(
+      this.searchService.search$.subscribe(searchTerm => {
+        this.filterSubjects(searchTerm);
+      })
+    );
   }
 
-  getSubjects(){
+  getSubjects() {
     this.subscription.add(
       this.quizzesService.getQuizzes().subscribe((res) => {
         this.subjectsList = res.subjects;
         this.updateDisplayedSubjects();
       })
     );
+  }
+
+  filterSubjects(searchTerm: string) {
+    if (!searchTerm.trim()) {
+      this.updateDisplayedSubjects();
+      return;
+    }
+
+    const filteredSubjects = this.subjectsList.filter(subject =>
+      subject.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    this.displayedSubjects = this.showAll ? filteredSubjects : filteredSubjects.slice(0, 6);
   }
 
   updateDisplayedSubjects() {

@@ -1,3 +1,12 @@
 .home {
   background-color: #f9f9f9;
+  min-height: 100vh;
+  position: relative;
+
+  .sidebar-col {
+    padding: 0;
+    @media (max-width: 768px) {
+      position: static;
+    }
+  }
 }

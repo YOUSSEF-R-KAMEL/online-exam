@@ -5,29 +5,122 @@ aside {
   width: 100%;
   border-radius: 0 10px 10px 0;
   transition: all 0.3s ease;
+  position: relative;
 
-  .sidebar-menu a {
-    background-color: $second-color;
-    display: inline-block;
-    color: #fff;
-    border-radius: 10px;
-    padding: 10px;
-    margin: 10px;
-    transition: all 0.3s ease;
-    &:hover {
-      background-color: $main-color;
+  .sidebar-header {
+    padding: 1rem;
+
+    .sidebar-logo {
+      img {
+        max-width: 120px;
+      }
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      color: $main-color;
+      cursor: pointer;
+      padding: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: rgba($main-color, 0.1);
+      }
+
+      mat-icon {
+        font-size: 24px;
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+
+  .sidebar-menu {
+    padding: 1rem 0;
+
+    a {
+      display: flex;
+      align-items: center;
+      color: #696F79;
+      padding: 0.75rem 1rem;
+      margin: 0.5rem 1rem;
+      transition: all 0.3s ease;
+      border-radius: 10px;
+      text-decoration: none;
+
+      &:hover,
+      &.router-link-active {
+        background-color: $main-color;
+        color: #fff;
+
+        mat-icon {
+          color: #fff;
+        }
+      }
+
+      mat-icon {
+        margin-right: 0.75rem;
+        color: $main-color;
+        transform: translateY(2px);
+
+        &.logout-icon {
+          transform: translateY(2px) rotate(180deg);
+        }
+      }
+
+      span {
+        font-size: 1rem;
+        font-weight: 500;
+      }
     }
   }
 }
 
-.router-link-active {
-  background-color: $main-color;
-  color: #fff;
-  border-radius: 10px;
-  padding: 10px;
-  margin: 10px;
-  transition: all 0.3s ease;
-  &:hover {
-    background-color: $second-color;
+@media (max-width: 768px) {
+  aside {
+    position: fixed;
+    top: -100%;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    width: 100%;
+    height: auto;
+    transition: .7s;
+    border-radius: 0 0 15px 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background: white;
+    padding: 0 1rem;
+
+    &.open {
+      top: 75px;
+      transition: .7s;
+    }
+
+    .sidebar-header {
+      padding: 0.75rem 1rem;
+
+      .sidebar-logo {
+        img {
+          max-width: 100px;
+        }
+      }
+    }
+
+    .sidebar-menu {
+      padding: 0.5rem 0;
+      li {
+        width: fit-content !important;
+        a {
+          margin: 0.25rem 0.5rem;
+          padding: 0.5rem 0.75rem;
+        }
+      }
+    }
   }
 }
+

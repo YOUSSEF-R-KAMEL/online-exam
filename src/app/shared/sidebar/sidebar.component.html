@@ -1,29 +1,37 @@
-<aside>
-  <div class="sidebar-logo mb-3">
-    <img src="images/sidebar/sidebar-logo.svg" alt="logo" class="img-fluid mb-3">
+<aside [class.open]="isOpen">
+  <div class="sidebar-header d-flex align-items-center justify-content-between">
+    <div class="sidebar-logo">
+      <img src="images/sidebar/sidebar-logo.svg" alt="logo" class="img-fluid">
+    </div>
+    <button class="close-btn d-md-none" (click)="toggleSidebar()">
+      <mat-icon>close</mat-icon>
+    </button>
   </div>
   <div class="sidebar-menu">
-    <ul>
+    <ul class="p-0">
       <li>
-        <a routerLink="/home" routerLinkActive="router-link-active">
-          <img src="images/sidebar/sidebar_icon01.svg" alt="sidebar_icon01" class="img-fluid mb-3">
-
+        <a
+          routerLink="/home"
+          routerLinkActive="router-link-active"
+          [routerLinkActiveOptions]="{exact: true}"
+          (click)="isOpen = false"
+        >
+          <mat-icon>dashboard</mat-icon>
           <span>Dashboard</span>
         </a>
       </li>
       <li>
-        <a routerLink="routePath" routerLinkActive="router-link-active">
-          <img src="images/sidebar/sidebar_icon02.svg" alt="sidebar_icon02" class="img-fluid mb-3">
+        <a routerLink="quiz-history" routerLinkActive="router-link-active" (click)="isOpen = false">
+          <mat-icon>history</mat-icon>
           <span>Quiz History</span>
         </a>
       </li>
       <li>
-        <a routerLink="routePath" routerLinkActive="router-link-active">
-          <img src="images/sidebar/sidebar_icon03.svg" alt="sidebar_icon03" class="img-fluid mb-3">
-          <span>Log Out </span>
+        <a (click)="logout()" style="cursor: pointer;">
+          <mat-icon class="logout-icon">logout</mat-icon>
+          <span>Log Out</span>
         </a>
       </li>
-
     </ul>
   </div>
 </aside>

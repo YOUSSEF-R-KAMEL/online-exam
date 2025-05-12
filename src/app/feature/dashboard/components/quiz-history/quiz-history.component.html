@@ -1,0 +1,17 @@
+@if (historyList.length > 0) {
+  <div class="quiz-card">
+    @for (exam of historyList; track $index) {
+      <div class="quiz-info">
+        <div class="quiz-text">
+          <h4>{{exam.examTitle}}</h4>
+          <p>{{exam.totalQuestions}} Questions</p>
+          <p class="main-color fs-6">{{exam.score}} Corrected Answers</p>
+        </div>
+      </div>
+      <div class="quiz-action d-flex flex-column">
+        <span>{{exam.date | date:'dd/MM/yyyy'}}</span>
+        <button (click)="openAnswers(exam)">Answers</button>
+      </div>
+    }
+  </div>
+}

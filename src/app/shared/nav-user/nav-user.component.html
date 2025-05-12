@@ -1,10 +1,22 @@
-<nav>
+<!-- nav desctop -->
+<nav class="nav-user-desktop p-3">
   <div class="row">
-    <div class="col-7 col-md-8 col-lg-9 col-xxl-10">
-      <i class="fa-solid fa-magnifying-glass"></i>
-      <input type="text" placeholder="Search Quiz" class="search-input" />
+    <div class="col-12 col-sm-8 col-lg-9 col-xxl-10 d-flex align-items-center">
+      <button class="menu-btn d-md-none me-3" (click)="toggleSidebar()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <div class="search-box position-relative w-100">
+        <mat-icon class="search-icon">search</mat-icon>
+        <input
+        type="text"
+        placeholder="Search Quiz"
+        class="search-input"
+        [value]="searchTerm"
+        (keyup)="onSearch($event)"
+        />
+      </div>
     </div>
-    <div class="col-5 col-md-4 col-lg-3 col-xxl-2">
+    <div class="col-12 col-sm-4 col-lg-3 col-xxl-2">
       <div class="header-actions">
         <button class="start-quiz-btn">Start Quiz</button>
         <div class="user-avatar-container">
@@ -14,3 +26,33 @@
     </div>
   </div>
 </nav>
+
+<!-- nav mobile -->
+<nav class="nav-user-mobile p-3">
+  <div class="nav-user-mobile-content d-flex align-items-center justify-content-between">
+    <div class="d-flex align-items-center">
+      <button class="menu-btn me-3" (click)="toggleSidebar()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <button class="menu-btn" (click)="toggleMobileSearch()">
+        <mat-icon *ngIf="!showMobileSearch">search</mat-icon>
+        <mat-icon *ngIf="showMobileSearch">close</mat-icon>
+      </button>
+    </div>
+    <div class="search-box position-relative" *ngIf="showMobileSearch">
+      <mat-icon class="search-icon">search</mat-icon>
+      <input
+        type="text"
+        placeholder="Search Quiz"
+        class="search-input"
+        [value]="searchTerm"
+        (keyup)="onSearch($event)"
+        autofocus
+      />
+    </div>
+    <div class="user-avatar-container">
+      <img src="images/user.jpg" alt="User" class="user-avatar" />
+    </div>
+  </div>
+</nav>
+

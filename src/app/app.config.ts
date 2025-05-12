@@ -7,6 +7,7 @@ import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/
 import { loadingInterceptor } from './core/interceptors/loading/loading.interceptor';
 import { errorsInterceptor } from './core/interceptors/errors/errors.interceptor';
 import { globalInterceptor } from './core/interceptors/global/global.interceptor';
+import { AuthApiService } from 'auth-api';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -20,5 +21,6 @@ export const appConfig: ApplicationConfig = {
       progressBar: true,
       timeOut: 6000,
     }),
+    AuthApiService
   ]
 };

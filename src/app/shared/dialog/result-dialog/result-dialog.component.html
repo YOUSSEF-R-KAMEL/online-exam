@@ -1,0 +1,32 @@
+<h2 mat-dialog-title>Exam Results</h2>
+<mat-dialog-content>
+  <div class="chart-container text-center">
+    <canvas baseChart
+      class="m-auto"
+      type="pie"
+      [data]="pieChartData"
+      [options]="pieChartOptions">
+    </canvas>
+  </div>
+
+  <div class="score-summary">
+    <h3>Score: {{ correctAnswers }}/{{ totalQuestions }}</h3>
+    <p>Percentage: {{ (correctAnswers / totalQuestions * 100).toFixed(1) }}%</p>
+  </div>
+
+  <div class="questions-review">
+    <h3>Question Review</h3>
+    <div *ngFor="let result of results; let i = index" class="question-item">
+      <p><strong>Q{{i + 1}}:</strong> {{ result.question }}</p>
+      <p [class.correct]="result.isCorrect" [class.incorrect]="!result.isCorrect">
+        Your answer: {{ result.selectedAnswer }}
+      </p>
+      <p *ngIf="!result.isCorrect" class="correct-answer">
+        Correct answer: {{ result.correctAnswer }}
+      </p>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close class="close-btn m-3">Close</button>
+</mat-dialog-actions>

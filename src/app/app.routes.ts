@@ -11,7 +11,7 @@ import { HomeComponent } from './feature/home/home.component';
 import { ForgetComponent } from './core/pages/auth/forget/forget.component';
 import { DashboardComponent } from './feature/dashboard/dashboard.component';
 import { ExamsComponent } from './feature/dashboard/components/exams/exams.component';
-
+import { QuizHistoryComponent } from './feature/dashboard/components/quiz-history/quiz-history.component';
 export const routes: Routes = [
   { path: '', component: AuthLayoutComponent, canActivate: [loggedGuard],
     children: [
@@ -26,6 +26,7 @@ export const routes: Routes = [
         [
           {path: "", component: DashboardComponent},
           {path: "exams/:id", component: ExamsComponent},
+          {path: "quiz-history", component: QuizHistoryComponent},
         ]
       }
     ]
