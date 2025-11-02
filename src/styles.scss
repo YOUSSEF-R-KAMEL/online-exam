@@ -3,7 +3,7 @@
 @use '../public/sass/main' as *;
 
 // Import Bootstrap
-@import 'bootstrap/scss/bootstrap';
+@use 'bootstrap/scss/bootstrap' as *;
 
 // Custom variables
 $primary-color: #4461F2;
@@ -50,8 +50,8 @@ body {
   transition: all $transition-duration ease-in-out;
 
   &:hover:not(.disabled) {
-    background-color: darken($primary-color, 10%);
-    border-color: darken($primary-color, 10%);
+    background-color: color-mix(in srgb, #4461F2, black 10%);
+    border-color: color-mix(in srgb, #4461F2, black 10%);
     transform: translateY(-1px);
   }
 

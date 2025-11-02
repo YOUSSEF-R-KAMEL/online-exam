@@ -45,7 +45,7 @@ canvas {
     margin-bottom: 15px;
     padding: 15px;
     border-radius: 8px;
-    background: #f5f5f5;
+    background: rgba(68, 97, 242, .1);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 
     p {
@@ -58,7 +58,7 @@ canvas {
     }
 
     .correct {
-      color: #4caf50;
+      color: #4461F2;
       font-weight: 500;
     }
 
@@ -68,11 +68,11 @@ canvas {
     }
 
     .correct-answer {
-      color: #4caf50;
+      color: #4461F2;
       font-style: italic;
       margin-top: 5px;
       padding-left: 10px;
-      border-left: 3px solid #4caf50;
+      border-left: 3px solid #4461F2;
     }
   }
 }

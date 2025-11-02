@@ -72,4 +72,12 @@ export class DialogComponent {
       }
     });
   }
+
+  isAnswerSelected(index: number): boolean {
+    return this.selectedAnswers[index] !== null && this.selectedAnswers[index] !== undefined;
+  }
+
+  canGoNext(currentIndex: number): boolean {
+    return this.isAnswerSelected(currentIndex);
+  }
 }

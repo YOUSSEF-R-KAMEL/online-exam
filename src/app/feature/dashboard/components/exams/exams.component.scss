@@ -283,8 +283,8 @@
   transition: all 0.2s ease-in-out;
 
   &:hover:not(:disabled) {
-    background-color: darken(#4461F2, 10%);
-    border-color: darken(#4461F2, 10%);
+    background-color: color-mix(in srgb, #4461F2, black 10%);
+    border-color: color-mix(in srgb, #4461F2, black 10%);
     transform: translateY(-1px);
   }
 

@@ -28,8 +28,8 @@
 
       <div class="buttons">
         <button mat-button matStepperPrevious *ngIf="i !== 0">Back</button>
-        <button mat-button matStepperNext *ngIf="i !== questionsList.length - 1">Next</button>
-        <button mat-button color="primary" (click)="submit()" *ngIf="i === questionsList.length - 1">Submit</button>
+        <button mat-button matStepperNext *ngIf="i !== questionsList.length - 1" [disabled]="!canGoNext(i)">Next</button>
+        <button mat-button color="primary" (click)="submit()" *ngIf="i === questionsList.length - 1" [disabled]="!canGoNext(i)">Submit</button>
       </div>
     </mat-step>
   </mat-horizontal-stepper>

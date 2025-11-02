@@ -80,3 +80,11 @@
   }
 }
 
+button:disabled {
+  opacity: .5;
+  cursor: no-drop;
+}
+
+::ng-deep .mat-step-header {
+  pointer-events: none;
+}

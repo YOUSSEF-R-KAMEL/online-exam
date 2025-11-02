@@ -56,7 +56,7 @@ export class ResultDialogComponent {
       labels: ['Correct', 'Incorrect'],
       datasets: [{
         data: [this.correctAnswers, this.totalQuestions - this.correctAnswers],
-        backgroundColor: ['#4caf50', '#f44336']
+        backgroundColor: ['#4461F2', '#f44336']
       }]
     };
 
